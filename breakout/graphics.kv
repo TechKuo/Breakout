@@ -1,0 +1,81 @@
+#:kivy 1.3
+# imager.ky
+# Walker White (wmw2)
+# November 8, 2012
+# This is a Kivy language file that provides information for the graphics objects
+# DO NOT MODIFY THIS FILE
+
+<GLine>:
+    canvas:
+        Color:
+            rgba: self._kivy_line_color
+        Line:
+            points: self.points
+            cap: 'round'
+            joint: 'round'
+            close: False
+
+<GTriangle>:
+    canvas:
+        Color:
+            rgba: self._kivy_fill_color
+        Triangle:
+            points: self.points
+        Color:
+            rgba: self._kivy_line_color
+        Line:
+            points: self.points
+            joint: 'miter'
+            close: True
+
+<GRectangle>:
+    canvas:
+        Color:
+            rgba: self._kivy_fill_color
+        Rectangle:
+            pos: self.pos
+            size: self.size          
+        Color:
+            rgba: self._kivy_line_color
+        Line:
+            points: (self.x,self.y,self.x+self.width,self.y,self.x+self.width,self.y+self.height,self.x,self.y+self.height)
+            close: True
+
+<GEllipse>:
+    canvas:
+        Color:
+            rgba: self._kivy_fill_color
+        Ellipse:
+            pos: self.pos
+            size: self.size          
+        Color:
+            rgba: self._kivy_line_color
+        Line:
+            ellipse: (self.x,self.y,self.width,self.height)
+
+<GImage>:
+    canvas:
+        Color:
+            rgba: [1, 1, 1, 1]
+        Rectangle:
+            source: None if self.source=='' else self.source
+            pos: self.pos
+            size: self.size
+
+
+<GLabel>:
+    canvas:
+        # Draws before interior label widget
+        Color:
+            rgba: self._kivy_fill_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<GameView>:
+    canvas:
+        Color:
+            rgb: (1,1,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size 
